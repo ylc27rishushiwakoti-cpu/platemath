@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en-IN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PlateMath: Swiggy &amp; Zomato profit calculator for cloud kitchens</title>
+    <meta name="description" content="See what every dish really earns after Swiggy and Zomato commission, payment fees, discounts and GST. Free menu profitability calculator for Indian cloud kitchens and restaurants." />
+    <link rel="canonical" href="https://__SITE__/" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="theme-color" content="#fbf7f0" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="PlateMath: know what every dish really earns" />
+    <meta property="og:description" content="Menu profitability for cloud kitchens. Commission, payment fees, discounts and GST on fees, worked out per dish and per channel." />
+    <meta property="og:image" content="https://__SITE__/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "PlateMath",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" },
+        "description": "Dish-level profit calculator for cloud kitchens selling on Swiggy, Zomato and direct channels."
+      }
+    </script>
+  </head>
+  <body class="site">
+    <header class="nav">
+      <a href="/" class="brand"><svg viewBox="0 0 32 32" width="26" height="26" aria-hidden="true"><circle cx="16" cy="16" r="14" fill="#d9601e"/><circle cx="16" cy="16" r="9" fill="none" stroke="#fbf7f0" stroke-width="2"/><path d="M12 16h8M16 12v8" stroke="#fbf7f0" stroke-width="2.4" stroke-linecap="round" transform="rotate(45 16 16)"/></svg><span>PlateMath</span></a>
+      <nav>
+        <a href="#how">How it works</a>
+        <a href="/blog/swiggy-zomato-commission-calculator/">Guide</a>
+        <a href="/app/" class="btn" data-cta="nav">Open calculator</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">For cloud kitchens on Swiggy &amp; Zomato</p>
+          <h1>That ₹199 dish isn't earning you ₹199.</h1>
+          <p class="lede">
+            Commission, payment fees, the discount you fund and 18% GST on all of it come out before you see a rupee.
+            PlateMath shows the profit you actually keep on every dish, on every channel, and the price you'd need to hit your margin.
+          </p>
+          <div class="hero-ctas">
+            <a href="/app/" class="btn accent big" data-cta="hero">Price my menu, free</a>
+            <span class="muted small">No sign-up. Your menu stays in your browser.</span>
+          </div>
+        </div>
+
+        <form id="quick" class="quick card-lite" aria-label="Quick profit check">
+          <div class="quick-title">Quick check</div>
+          <label>Menu price <span class="in"><span>₹</span><input name="price" type="number" min="0" value="199" inputmode="decimal" /></span></label>
+          <label>Food + packaging cost <span class="in"><span>₹</span><input name="cost" type="number" min="0" value="70" inputmode="decimal" /></span></label>
+          <label>Commission <span class="in"><input name="commission" type="number" min="0" max="100" value="25" inputmode="decimal" /><span>%</span></span></label>
+          <output id="quick-out" class="quick-out" aria-live="polite"></output>
+          <a href="/app/" class="quick-more" data-cta="quick">Do this for the whole menu →</a>
+        </form>
+      </section>
+
+      <section id="how" class="how">
+        <h2>Built the way a kitchen owner thinks</h2>
+        <div class="steps">
+          <article>
+            <span class="num">1</span>
+            <h3>Add your dishes</h3>
+            <p>Menu price, ingredient cost, packaging. Type them in, paste a CSV, or start from a sample momo and dosa menu.</p>
+          </article>
+          <article>
+            <span class="num">2</span>
+            <h3>Set your real fees</h3>
+            <p>Commission, payment fee, fixed fees and the discount you fund, separately for Swiggy, Zomato and your own channel.</p>
+          </article>
+          <article>
+            <span class="num">3</span>
+            <h3>Fix the leaks</h3>
+            <p>Every dish is colour-coded against your target margin, with the exact price that would get it there.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="features">
+        <div class="feature">
+          <h3>Side by side channels</h3>
+          <p>See the same dish on Swiggy, Zomato and direct orders in one row. Decide where to push, and where a "40% off" campaign quietly loses money.</p>
+        </div>
+        <div class="feature">
+          <h3>A waterfall for every dish</h3>
+          <p>Click any result to see exactly where the money goes, from menu price to what lands in your account, then try a new price live.</p>
+        </div>
+        <div class="feature">
+          <h3>Share with your partner</h3>
+          <p>One link carries the whole menu and fee setup. No accounts. Export to CSV whenever you want it in a sheet.</p>
+        </div>
+        <div class="feature">
+          <h3>Honest maths</h3>
+          <p>Food GST is treated as pass-through, GST on platform fees is counted as a cost, and discount caps work the way the apps run them.</p>
+        </div>
+      </section>
+
+      <section class="final">
+        <h2>Five minutes. One menu. No more guessing.</h2>
+        <a href="/app/" class="btn accent big" data-cta="footer">Open PlateMath</a>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <span>© <span id="year">2026</span> PlateMath. Made in Gurgaon for cloud kitchens.</span>
+      <span>Estimates only. Not affiliated with Swiggy or Zomato.</span>
+    </footer>
+    <script type="module" src="/src/site/site.ts"></script>
+  </body>
+</html>
