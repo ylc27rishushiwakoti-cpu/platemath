@@ -387,13 +387,14 @@ function Summary({
 function EmptyState({ onAdd, onSample, onImport }: { onAdd: () => void; onSample: () => void; onImport: () => void }) {
   return (
     <section className="card empty">
-      <div className="empty-art" aria-hidden>
-        <svg viewBox="0 0 120 80" width="160">
-          <ellipse cx="60" cy="62" rx="52" ry="10" fill="var(--line)" />
-          <path d="M22 58c0-22 17-38 38-38s38 16 38 38H22Z" fill="var(--paper-2)" stroke="var(--ink)" strokeWidth="2.5" />
-          <path d="M40 30c5 4 10 5 20 5s15-1 20-5" stroke="var(--ink)" strokeWidth="2" fill="none" strokeLinecap="round" />
-          <text x="60" y="52" textAnchor="middle" fontSize="16" fontWeight="700" fill="var(--accent)">₹?</text>
-        </svg>
+      <div className="empty-art ticket-wrap" aria-hidden>
+        <div className="ticket">
+          <div className="t-line"><span>Menu price</span><span>₹199.00</span></div>
+          <div className="t-line"><span>Platform</span><span>−₹63.64</span></div>
+          <div className="t-line"><span>Food + packaging</span><span>−₹66.00</span></div>
+          <hr className="ticket-rule double" />
+          <div className="t-line wf-profit h-great"><span>You keep</span><span className="keep">₹69.36</span></div>
+        </div>
       </div>
       <h1>What does each dish really earn you?</h1>
       <p>
@@ -434,7 +435,7 @@ function BreakdownPanel({
     <section ref={ref} className="card breakdown" aria-label={`Breakdown for ${dish.name}`}>
       <div className="breakdown-head">
         <div>
-          <div className="eyebrow">Where the money goes</div>
+          <div className="kicker">Where the money goes</div>
           <h2>{dish.name || 'Untitled dish'}</h2>
         </div>
         <div className="breakdown-tools">
@@ -470,37 +471,44 @@ function Waterfall({ label, b, target, targetPct }: { label: string; b: Breakdow
     { k: 'Food + packaging', v: -b.cost, kind: 'cost' },
   ];
   const rows = all.filter((r) => r.kind !== 'cut' || r.v !== 0);
-  const scale = Math.max(b.price, 1);
   const h = health(b.marginPct, targetPct);
+  const price = Math.max(b.price, 1);
+  const pct = (n: number) => `${Math.max(0, Math.min(100, (n / price) * 100))}%`;
+  const platform = b.discount + b.totalPlatformCut;
   return (
-    <div className="waterfall">
-      <div className="waterfall-title">
-        <span>{label}</span>
-        <span className={`pill h-${h}`}>{b.marginPct.toFixed(1)}% margin</span>
-      </div>
-      <ul>
+    <div className="ticket-wrap">
+      <div className="ticket waterfall">
+        <div className="waterfall-title">
+          <strong>{label}</strong>
+          <span className={`pill h-${h}`}>{b.marginPct.toFixed(1)}% margin</span>
+        </div>
+        <div className="split" role="img" aria-label={`Of ${formatINR(b.price)}: platform and discount ${formatINR(platform)}, costs ${formatINR(b.cost)}, you keep ${formatINR(b.profit)}`}>
+          <span className="split-platform" style={{ width: pct(platform) }} />
+          <span className="split-cost" style={{ width: pct(b.cost) }} />
+          <span className={`split-keep h-${h}`} style={{ width: pct(b.profit) }} />
+        </div>
+        <div className="split-legend">
+          <span><i className="split-platform" />Platform</span>
+          <span><i className="split-cost" />Costs</span>
+          <span><i className={`split-keep h-${h}`} />You keep</span>
+        </div>
+        <hr className="ticket-rule" />
         {rows.map((r) => (
-          <li key={r.k} className={`wf-${r.kind}`}>
-            <span className="wf-k">{r.k}</span>
-            <span className="wf-bar" aria-hidden>
-              <span style={{ width: `${Math.min(100, (Math.abs(r.v) / scale) * 100)}%` }} />
-            </span>
-            <span className="wf-v">{formatINR(r.v, 2)}</span>
-          </li>
+          <div key={r.k} className={`t-line wf-${r.kind}`}>
+            <span>{r.k}</span>
+            <span>{r.v < 0 ? '−' : ''}{formatINR(Math.abs(r.v), 2)}</span>
+          </div>
         ))}
-        <li className={`wf-profit h-${h}`}>
-          <span className="wf-k">You keep</span>
-          <span className="wf-bar" aria-hidden>
-            <span style={{ width: `${Math.max(0, Math.min(100, (b.profit / scale) * 100))}%` }} />
-          </span>
-          <span className="wf-v">{formatINR(b.profit, 2)}</span>
-        </li>
-      </ul>
-      <p className="wf-note">
-        Customer pays {formatINR(b.customerPays, 2)} incl. GST on food. Platform takes {formatINR(b.totalPlatformCut, 2)} (
-        {((b.totalPlatformCut / b.price) * 100).toFixed(0)}% of menu price).{' '}
-        {target === null ? `No price reaches ${targetPct}% with these fees.` : `Price for ${targetPct}% margin: ${formatINR(target)}.`}
-      </p>
+        <hr className="ticket-rule double" />
+        <div className={`t-line wf-profit h-${h}`}>
+          <span>You keep</span>
+          <span className="keep">{formatINR(b.profit, 2)}</span>
+        </div>
+        <p className="wf-note">
+          Customer pays {formatINR(b.customerPays, 2)} incl. GST on food.{' '}
+          {target === null ? `No price reaches ${targetPct}% with these fees.` : `Price for ${targetPct}% margin: ${formatINR(target)}.`}
+        </p>
+      </div>
     </div>
   );
 }
@@ -573,10 +581,9 @@ function SettingsSheet({
 
 export function Logo() {
   return (
-    <svg viewBox="0 0 32 32" width="26" height="26" aria-hidden>
-      <circle cx="16" cy="16" r="14" fill="var(--accent)" />
-      <circle cx="16" cy="16" r="9" fill="none" stroke="var(--paper)" strokeWidth="2" />
-      <path d="M12 16h8M16 12v8" stroke="var(--paper)" strokeWidth="2.4" strokeLinecap="round" transform="rotate(45 16 16)" />
+    <svg viewBox="0 0 32 32" width="28" height="28" aria-hidden>
+      <rect x="3" y="3" width="26" height="26" rx="7" fill="var(--ink)" />
+      <path d="M10 11h12M10 16h8M10 21h12" stroke="var(--turmeric)" strokeWidth="2.6" strokeLinecap="round" />
     </svg>
   );
 }

@@ -7,7 +7,7 @@
     <meta name="description" content="See what every dish really earns after Swiggy and Zomato commission, payment fees, discounts and GST. Free menu profitability calculator for Indian cloud kitchens and restaurants." />
     <link rel="canonical" href="https://__SITE__/" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <meta name="theme-color" content="#fbf7f0" />
+    <meta name="theme-color" content="#e8ebe9" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="PlateMath: know what every dish really earns" />
     <meta property="og:description" content="Menu profitability for cloud kitchens. Commission, payment fees, discounts and GST on fees, worked out per dish and per channel." />
@@ -27,7 +27,7 @@
   </head>
   <body class="site">
     <header class="nav">
-      <a href="/" class="brand"><svg viewBox="0 0 32 32" width="26" height="26" aria-hidden="true"><circle cx="16" cy="16" r="14" fill="#d9601e"/><circle cx="16" cy="16" r="9" fill="none" stroke="#fbf7f0" stroke-width="2"/><path d="M12 16h8M16 12v8" stroke="#fbf7f0" stroke-width="2.4" stroke-linecap="round" transform="rotate(45 16 16)"/></svg><span>PlateMath</span></a>
+      <a href="/" class="brand"><svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true"><rect x="3" y="3" width="26" height="26" rx="7" fill="#15181b"/><path d="M10 11h12M10 16h8M10 21h12" stroke="#f2b705" stroke-width="2.6" stroke-linecap="round"/></svg><span>PlateMath</span></a>
       <nav>
         <a href="#how">How it works</a>
         <a href="/blog/swiggy-zomato-commission-calculator/">Guide</a>
@@ -38,70 +38,80 @@
     <main>
       <section class="hero">
         <div class="hero-copy">
-          <p class="eyebrow">For cloud kitchens on Swiggy &amp; Zomato</p>
+          <p class="kicker">For cloud kitchens on Swiggy and Zomato</p>
           <h1>That ₹199 dish isn't earning you ₹199.</h1>
           <p class="lede">
             Commission, payment fees, the discount you fund and 18% GST on all of it come out before you see a rupee.
-            PlateMath shows the profit you actually keep on every dish, on every channel, and the price you'd need to hit your margin.
+            PlateMath works out what you keep on every dish, on every channel, and the price that gets you to your margin.
           </p>
           <div class="hero-ctas">
-            <a href="/app/" class="btn accent big" data-cta="hero">Price my menu, free</a>
-            <span class="muted small">No sign-up. Your menu stays in your browser.</span>
+            <a href="/app/" class="btn accent big" data-cta="hero">Price my menu</a>
+            <span class="muted small">Free. No sign-up. Your menu stays in your browser.</span>
           </div>
         </div>
 
-        <form id="quick" class="quick card-lite" aria-label="Quick profit check">
-          <div class="quick-title">Quick check</div>
-          <label>Menu price <span class="in"><span>₹</span><input name="price" type="number" min="0" value="199" inputmode="decimal" /></span></label>
-          <label>Food + packaging cost <span class="in"><span>₹</span><input name="cost" type="number" min="0" value="70" inputmode="decimal" /></span></label>
-          <label>Commission <span class="in"><input name="commission" type="number" min="0" max="100" value="25" inputmode="decimal" /><span>%</span></span></label>
-          <output id="quick-out" class="quick-out" aria-live="polite"></output>
-          <a href="/app/" class="quick-more" data-cta="quick">Do this for the whole menu →</a>
-        </form>
+        <div class="ticket-wrap hero-ticket">
+          <form id="quick" class="ticket" aria-label="Try it on one order">
+            <div class="t-head">
+              <strong>KOT #0199</strong>
+              <span>Swiggy</span>
+            </div>
+            <p class="t-sub">1 × Steamed chicken momos</p>
+            <hr class="ticket-rule" />
+            <label class="t-row"><span>Menu price</span><span class="t-in">₹<input name="price" type="number" min="0" value="199" inputmode="decimal" aria-label="Menu price in rupees" /></span></label>
+            <label class="t-row"><span>Commission rate</span><span class="t-in"><input name="commission" type="number" min="0" max="100" value="25" inputmode="decimal" aria-label="Commission percent" />%</span></label>
+            <div id="quick-lines"></div>
+            <hr class="ticket-rule" />
+            <label class="t-row"><span>Food + packaging</span><span class="t-in">₹<input name="cost" type="number" min="0" value="70" inputmode="decimal" aria-label="Food and packaging cost in rupees" /></span></label>
+            <hr class="ticket-rule double" />
+            <output id="quick-out" class="t-total" aria-live="polite"></output>
+            <p class="t-foot">Change any number to try your own dish.</p>
+          </form>
+        </div>
       </section>
 
       <section id="how" class="how">
-        <h2>Built the way a kitchen owner thinks</h2>
-        <div class="steps">
-          <article>
-            <span class="num">1</span>
+        <h2>Three steps, about five minutes</h2>
+        <ol class="steps">
+          <li>
             <h3>Add your dishes</h3>
-            <p>Menu price, ingredient cost, packaging. Type them in, paste a CSV, or start from a sample momo and dosa menu.</p>
-          </article>
-          <article>
-            <span class="num">2</span>
+            <p>Menu price, ingredient cost and packaging. Type them in, import a CSV, or start from a sample momo and dosa menu.</p>
+          </li>
+          <li>
             <h3>Set your real fees</h3>
             <p>Commission, payment fee, fixed fees and the discount you fund, separately for Swiggy, Zomato and your own channel.</p>
-          </article>
-          <article>
-            <span class="num">3</span>
+          </li>
+          <li>
             <h3>Fix the leaks</h3>
-            <p>Every dish is colour-coded against your target margin, with the exact price that would get it there.</p>
-          </article>
-        </div>
+            <p>Every dish is marked against your target margin, with the exact price that would get it there.</p>
+          </li>
+        </ol>
       </section>
 
       <section class="features">
-        <div class="feature">
-          <h3>Side by side channels</h3>
-          <p>See the same dish on Swiggy, Zomato and direct orders in one row. Decide where to push, and where a "40% off" campaign quietly loses money.</p>
-        </div>
-        <div class="feature">
-          <h3>A waterfall for every dish</h3>
-          <p>Click any result to see exactly where the money goes, from menu price to what lands in your account, then try a new price live.</p>
-        </div>
-        <div class="feature">
-          <h3>Share with your partner</h3>
-          <p>One link carries the whole menu and fee setup. No accounts. Export to CSV whenever you want it in a sheet.</p>
-        </div>
-        <div class="feature">
-          <h3>Honest maths</h3>
-          <p>Food GST is treated as pass-through, GST on platform fees is counted as a cost, and discount caps work the way the apps run them.</p>
-        </div>
+        <h2>What you get</h2>
+        <dl>
+          <div>
+            <dt>Channels side by side</dt>
+            <dd>The same dish on Swiggy, Zomato and direct orders in one row, so you can see where to push and where a "40% off" campaign quietly loses money.</dd>
+          </div>
+          <div>
+            <dt>A receipt for every dish</dt>
+            <dd>Click any result to see each deduction from menu price to payout, then try a new price and watch it update.</dd>
+          </div>
+          <div>
+            <dt>Share without accounts</dt>
+            <dd>One link carries the whole menu and fee setup to your partner. Export to CSV whenever you want it in a sheet.</dd>
+          </div>
+          <div>
+            <dt>Maths you can check</dt>
+            <dd>Food GST is treated as pass-through, GST on platform fees counts as a cost, and discount caps work the way the apps apply them.</dd>
+          </div>
+        </dl>
       </section>
 
       <section class="final">
-        <h2>Five minutes. One menu. No more guessing.</h2>
+        <h2>Know your numbers before the next payout.</h2>
         <a href="/app/" class="btn accent big" data-cta="footer">Open PlateMath</a>
       </section>
     </main>
