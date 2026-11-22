@@ -65,7 +65,3 @@ profit       = payout − food cost − packaging
 ```
 
 GST on food is collected from the customer and remitted by the platform, so it is treated as pass-through. Default fee values are editable placeholders, not official platform rates.
-
-## Built with AI
-
-Designed and built with Claude (Anthropic) as a pair programmer: product scoping, the pricing model, the React UI, tests and deployment config were written in an AI-assisted workflow, then reviewed and verified against hand-worked examples.
